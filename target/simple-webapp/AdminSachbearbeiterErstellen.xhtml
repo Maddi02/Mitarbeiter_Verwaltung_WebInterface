@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<ui:include src="/Menubar/AdminMenubar.xhtml"/>
+<h:head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/Menubar/AdminMenubar.xhtml" media="all" />
+    <style type="text/css">
+        @import url(/SharedXHTMLFiles/panelGridCSS.css);
+    </style>
+</h:head>
+<h:body>
+    <h1>
+        <h:outputText class="title" value="Sacharbeiter erstellen" />
+    </h1>
+    <ui:include src="/SharedXHTMLFiles/LoginAndCreate.xhtml"/>
+
+</h:body>
+</html>

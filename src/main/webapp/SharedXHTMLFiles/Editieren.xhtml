@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://java.sun.com/jsf/html">
+<h:head>
+    <link rel="stylesheet" type="text/css" href="Menubar/AdminMenubar.xhtml" media="all" />
+    <style type="text/css">
+        @import url(/SharedXHTMLFiles/panelGridCSS.css);
+    </style>
+</h:head>
+<body>
+<h1>
+    <h:outputText class="title" value="Sacharbeiter editieren" />
+</h1>
+<h:form prependId="false">
+    <h:panelGrid id = "panel" columns="2" border="1" cellspacing="1" cellpadding="10" width="100%" hight="100%">
+        <h:outputLabel value="Wähle eine Nutzer aus: " style="color: white"></h:outputLabel>
+        <p:selectOneMenu id="selectUser" value="#{EditierenBean.oldUsername}">
+            <f:selectItems value="#{FortbilungZuordnenBean.getNutzer()}" />
+        </p:selectOneMenu>
+        <h:inputText class="LoginInput" value="#{EditierenBean.newUsername}" required="true"/>
+        <h:outputLabel value="new  Username" />
+        <h:inputText class="LoginInput" value="#{EditierenBean.newPassword}" required="true"/>
+        <h:outputLabel value="new  Password" />
+        <h:selectOneRadio value="#{EditierenBean.newRole}" disabled="#{!EditierenBean.isShowOption()}" >
+            <f:selectItem  itemValue="Admin" />Admin
+            <f:selectItem  itemValue="Sachbearbeiter" />Sachbearbeiter
+        </h:selectOneRadio>
+        <h:outputLabel value="momentane Fortbildungen" style="color: white"></h:outputLabel>
+        <h:outputText value="#{EditierenBean.getDoneFortbildung()}" style="color: white"></h:outputText>
+        <f:facet name="footer">
+            <h:panelGroup style="...">
+                <h:commandButton class="button" value = "Show Fortbildungen"  />
+                <h:commandButton class="button" value="GO" action="#{EditierenBean.EditUser}"/>
+                <h:commandButton class="button" value="Abbrechen" immediate="true"/>
+            </h:panelGroup>
+        </f:facet>
+    </h:panelGrid>
+    <h:messages style = "color:red;margin:8px;" />
+</h:form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:p="http://java.sun.com/jsf/html">
+<h:head>
+   <link rel="stylesheet" type="text/css" href="AdminMenubar.xhtml" media="all" />
+   <style type="text/css">
+      @import url(/SharedXHTMLFiles/panelGridCSS.css);
+      .radiobutton{
+         color: white;
+      }
+   </style>
+   <title>
+      Fortbilundung löschen
+   </title>
+   <h:body>
+      <h1>
+         <h:outputText class="title" value="Fortbildung zuordnen" />
+      </h1>
+      <h:form>
+         <h:panelGrid id="panel" columns="2" border="1" cellspacing="1" cellpadding="10" width="100%">
+            <h:outputLabel value="momentane Fortbildungen" style="color: white"></h:outputLabel>
+            <h:outputText value="#{FortbilungZuordnenBean.getDoneFortbildung()}" style="color: white"></h:outputText>
+            <h:panelGroup style = "display:block; text-align:center">
+               <div class="user">
+                  <h:outputLabel value="Wähle eine Nutzer aus: " style="color: white"></h:outputLabel>
+                  <p:selectOneMenu id="selectUser" value="#{FortbilungZuordnenBean.ausgewählterUser}">
+                     <f:selectItems value="#{FortbilungZuordnenBean.getNutzer()}" />
+                  </p:selectOneMenu>
+
+               </div>
+            </h:panelGroup>
+            <h:panelGroup style = "display:block; text-align:center">
+               <div class="Sachbearbeiter">
+                  <h:outputLabel value="Wähle eine Fortbildung aus: " style="color: white" ></h:outputLabel>
+                  <p:selectOneMenu id="selectFortbildung"  value="#{FortbilungZuordnenBean.ausgewählteFortbildung}">
+                     <f:selectItems value="#{FortbilungZuordnenBean.getFortbildungen()}" />
+                  </p:selectOneMenu>
+               </div>
+            </h:panelGroup>
+            <h:selectOneRadio value="#{FortbilungZuordnenBean.status}" styleClass="radiobutton">
+               <f:selectItem  itemValue="Bestanden" itemLabel="Bestanden"/>
+               <f:selectItem  itemValue="Belegt" itemLabel="Belegt"/>
+            </h:selectOneRadio>
+            <f:facet name = "footer">
+               <h:panelGroup style = "display:block; text-align:center">
+                  <h:commandButton class="button" value = "Show Fortbildungen"  />
+                  <h:commandButton class="button" value = "GO" action="#{FortbilungZuordnenBean.setFortbildung}"  />
+                  <h:commandButton class="button" value = "Abbrechen" immediate="true"/>
+               </h:panelGroup>
+            </f:facet>
+         </h:panelGrid>
+         <h:messages style = "color:red;margin:8px;" />
+      </h:form>
+   </h:body>
+</h:head>
+</html>
